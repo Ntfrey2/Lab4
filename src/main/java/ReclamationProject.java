@@ -8,19 +8,32 @@
  * 5. Remove unnecessary comments as appropriate
  */
 
-public class ReclamationProject
-{
-    static String doit(String a,String b){
-        if (a.length() > b.length()){
-            String c = a; // TODO: set c to a
-            a=b; b=c;}
-        String r = (a.equals(b)) ? "" : ""; // I love the ternary operator!
+/**
+ * javadoc comment for this class.
+ */
+public class ReclamationProject {
+    /**
+     * A method.
+     * @param firstString sting variable that is final
+     * @param secondString string variable that is final
+     * @return r is returned
+     */
+    static String findLongestCommonSubstring(final String firstString, final String secondString) {
+        if (firstString.length() > secondString.length()) {
+           return ReclamationProject.findLongestCommonSubstring(secondString, firstString);
+        }
+        String currentLongest = " ";
         /*
-         * For loop with i
+         * For loop with
          */
-        for (int i = 0; i < a.length(); i++) { for (int j = a.length() - i; j > 0; j--) {
-                for (int k = 0; k < b.length()- j; k++) {
-                    r = (a.regionMatches(i, b, k, j) && j >r.length()) ? a.substring(i,i + j) : r; // Do it!
-                        }} // Ah yeah
-        } return r; }
+        for (int i = 0; i < firstString.length(); i++) {
+            for (int j = firstString.length() - i; j > 0; j--) {
+                for (int k = 0; k < secondString.length() - j; k++) {
+                    if (firstString.regionMatches(i, secondString, k, j)
+                            && j > currentLongest.length()) {
+                        firstString.substring(i, i + j);
+                    }
+                }
+            }
+        } return currentLongest; }
 }
